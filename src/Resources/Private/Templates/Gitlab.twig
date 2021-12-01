@@ -5,7 +5,7 @@
 <testsuite tests="{{ fileMatches.count }}" errors="{{ fileMatches.count }}">
 {% set file = fileMatches.getPath|replace({ (basePath ~ "/"): ""}) %}
 {% for fileMatch in fileMatches %}
-    <testcase file="{{ file }}#L{{ fileMatch.getLine }}" name="{{ fileMatch.getMessage|escapeDollar }} ({{ fileMatch.getIndicator }} / {{ fileMatch.getType }})">
+    <testcase classname="{{ fileMatch.getIdentifier }}" file="{{ file }}#L{{ fileMatch.getLine }}" name="{{ fileMatch.getMessage|escapeDollar }} ({{ fileMatch.getIndicator }} / {{ fileMatch.getType }})">
     <failure>
 {{ fileMatches.getPath|getLineFromFile(fileMatch.getLine)|raw|escapeDollar }}
 
